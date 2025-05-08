@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\eliiz\\source\\repos\\eventEaseBookingSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE99831-5A1B-4329-AC7B-90DEAC1E0146}|eventEaseBookingSystem\\eventEaseBookingSystem.csproj|c:\\users\\eliiz\\source\\repos\\eventeasebookingsystem\\eventeasebookingsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE99831-5A1B-4329-AC7B-90DEAC1E0146}|eventEaseBookingSystem\\eventEaseBookingSystem.csproj|solutionrelative:eventeasebookingsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE99831-5A1B-4329-AC7B-90DEAC1E0146}|eventEaseBookingSystem\\eventEaseBookingSystem.csproj|c:\\users\\eliiz\\source\\repos\\eventeasebookingsystem\\eventeasebookingsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE99831-5A1B-4329-AC7B-90DEAC1E0146}|eventEaseBookingSystem\\eventEaseBookingSystem.csproj|solutionrelative:eventeasebookingsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\eliiz\\source\\repos\\eventEaseBookingSystem\\eventEaseBookingSystem\\Program.cs",
+              "RelativeDocumentMoniker": "eventEaseBookingSystem\\Program.cs",
+              "ToolTip": "C:\\Users\\eliiz\\source\\repos\\eventEaseBookingSystem\\eventEaseBookingSystem\\Program.cs",
+              "RelativeToolTip": "eventEaseBookingSystem\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:16:29.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\eliiz\\source\\repos\\eventEaseBookingSystem\\eventEaseBookingSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "eventEaseBookingSystem\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\eliiz\\source\\repos\\eventEaseBookingSystem\\eventEaseBookingSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "eventEaseBookingSystem\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAA8wBkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T10:39:22.136Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

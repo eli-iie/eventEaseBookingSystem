@@ -1,0 +1,13 @@
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\eventEaseBookingSystem.exe
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\appsettings.Development.json
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\appsettings.json
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\eventEaseBookingSystem.dll
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\eventEaseBookingSystem.deps.json
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\eventEaseBookingSystem.runtimeconfig.json
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\eventEaseBookingSystem.pdb
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\DnsClient.dll
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\MongoDB.Bson.dll
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\MongoDB.Driver.dll
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\SharpCompress.dll
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\Snappier.dll
+C:\Users\eliiz\source\repos\eventEaseBookingSystem\publish\ZstdSharp.dll
