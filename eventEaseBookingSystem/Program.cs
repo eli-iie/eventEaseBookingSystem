@@ -12,6 +12,10 @@ builder.Services.AddSingleton(sp => new MongoDbContext(
 
 var app = builder.Build();
 
+// Seed the database with sample venues
+var dbContext = app.Services.GetRequiredService<MongoDbContext>();
+dbContext.SeedDatabase();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

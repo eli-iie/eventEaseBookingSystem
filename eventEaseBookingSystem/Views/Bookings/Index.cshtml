@@ -1,0 +1,52 @@
+@model IEnumerable<eventEaseBookingSystem.Models.Booking>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Bookings</h1>
+    <a asp-action="Create" class="btn btn-success">+ Create Booking</a>
+</div>
+
+<div class="row justify-content-center mb-4">
+    <div class="col-md-10">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Bookings</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="Search" method="get" class="mb-4">
+                    <div class="input-group input-group-lg">
+                        <input type="text" name="query" class="form-control" placeholder="Search bookings by event or venue..." />
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+                @if (Model != null && Model.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle bg-white rounded shadow-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Event Name</th>
+                                    <th>Venue Name</th>
+                                    <th>Booking Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var booking in Model)
+                                {
+                                    <tr>
+                                        <td>@booking.Event.EventName</td>
+                                        <td>@booking.Venue.VenueName</td>
+                                        <td>@booking.BookingDate.ToString("yyyy-MM-dd")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No bookings found.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

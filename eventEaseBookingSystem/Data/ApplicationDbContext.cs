@@ -20,6 +20,7 @@ namespace eventEaseBookingSystem.Data
         public IMongoCollection<Venue> Venues => _database.GetCollection<Venue>("Venues");
         public IMongoCollection<Event> Events => _database.GetCollection<Event>("Events");
         public IMongoCollection<Booking> Bookings => _database.GetCollection<Booking>("Bookings");
+        public IMongoDatabase Database => _database;
 
         private void InitializeCollections()
         {
@@ -38,6 +39,23 @@ namespace eventEaseBookingSystem.Data
             if (!collectionNames.Contains("Bookings"))
             {
                 _database.CreateCollection("Bookings");
+            }
+        }
+
+        public void SeedDatabase()
+        {
+            var venuesCollection = _database.GetCollection<Venue>("Venues");
+
+            if (!venuesCollection.Find(_ => true).Any())
+            {
+                var sampleVenues = new List<Venue>
+                {
+                    new Venue { VenueName = "Grand Hall", Location = "Downtown", Capacity = 500 },
+                    new Venue { VenueName = "Conference Center", Location = "Uptown", Capacity = 300 },
+                    new Venue { VenueName = "Open Air Theater", Location = "Suburbs", Capacity = 1000 }
+                };
+
+                venuesCollection.InsertMany(sampleVenues);
             }
         }
     }

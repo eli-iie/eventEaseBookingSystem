@@ -1,0 +1,25 @@
+@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Booking Summary";
+}
+
+<h1>Booking Summary</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Venue ID</th>
+            <th>Total Bookings</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.VenueId</td>
+                <td>@item.TotalBookings</td>
+            </tr>
+        }
+    </tbody>
+</table>

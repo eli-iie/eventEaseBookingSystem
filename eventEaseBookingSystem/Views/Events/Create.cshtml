@@ -1,0 +1,54 @@
+@model eventEaseBookingSystem.Models.Event
+@using eventEaseBookingSystem.Models
+
+@{
+    ViewData["Title"] = "Create Event";
+    var venues = ViewBag.Venues as List<Venue>;
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Create Event</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div class="mb-3">
+                        <label asp-for="EventName" class="form-label">Event Name</label>
+                        <input asp-for="EventName" class="form-control" />
+                        <span asp-validation-for="EventName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="EventDate" class="form-label">Event Date</label>
+                        <input asp-for="EventDate" class="form-control" type="date" />
+                        <span asp-validation-for="EventDate" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="VenueId" class="form-label">Venue</label>
+                        <select asp-for="VenueId" class="form-select">
+                            <option value="">-- Select Venue --</option>
+                            @if (venues != null)
+                            {
+                                foreach (var venue in venues)
+                                {
+                                    <option value="@venue.VenueId">@venue.VenueName</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="VenueId" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

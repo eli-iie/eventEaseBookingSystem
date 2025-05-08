@@ -1,8 +1,41 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="col-md-8 text-center">
+        <h1 class="display-3 fw-bold mb-4">Welcome to EventEase</h1>
+        <p class="lead mb-5">Your all-in-one platform for managing venues, events, and bookings in the cloud.<br />
+        Streamline your workflow, prevent double bookings, and keep your team organized.</p>
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Venues</h5>
+                        <p class="card-text">Browse, add, and edit venues. Upload images and manage details.</p>
+                        <a href="/Venues" class="btn btn-outline-primary">Manage Venues</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Bookings</h5>
+                        <p class="card-text">View, create, and manage bookings. Prevent double bookings with smart validation.</p>
+                        <a href="/Bookings" class="btn btn-outline-primary">Manage Bookings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Reports</h5>
+                        <p class="card-text">View booking summaries and generate management reports.</p>
+                        <a href="/Reports/BookingSummary" class="btn btn-outline-primary">View Reports</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/Bookings/Calendar" class="btn btn-lg btn-primary mt-3">View Booking Calendar</a>
+    </div>
 </div>

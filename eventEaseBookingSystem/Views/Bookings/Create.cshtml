@@ -1,0 +1,59 @@
+@model eventEaseBookingSystem.Models.Booking
+@using eventEaseBookingSystem.Models
+
+@{
+    ViewData["Title"] = "Create Booking";
+    var events = ViewBag.Events as List<Event>;
+    var venues = ViewBag.Venues as List<Venue>;
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Create Booking</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div class="mb-3">
+                        <label asp-for="EventId" class="form-label">Event</label>
+                        <select asp-for="EventId" class="form-select">
+                            <option value="">-- Select Event --</option>
+                            @if (events != null)
+                            {
+                                foreach (var eventItem in events)
+                                {
+                                    <option value="@eventItem.EventId">@eventItem.EventName</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="EventId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="VenueId" class="form-label">Venue</label>
+                        <select asp-for="VenueId" class="form-select">
+                            <option value="">-- Select Venue --</option>
+                            @if (venues != null)
+                            {
+                                foreach (var venue in venues)
+                                {
+                                    <option value="@venue.VenueId">@venue.VenueName</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="VenueId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BookingDate" class="form-label">Booking Date</label>
+                        <input asp-for="BookingDate" class="form-control" type="date" />
+                        <span asp-validation-for="BookingDate" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

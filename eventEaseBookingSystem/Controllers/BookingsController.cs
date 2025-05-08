@@ -79,5 +79,11 @@ namespace eventEaseBookingSystem.Controllers
                 return View();
             }
         }
+
+        public IActionResult Calendar()
+        {
+            var bookings = _context.Bookings.Find(_ => true).ToList();
+            return View(bookings);
+        }
     }
 }

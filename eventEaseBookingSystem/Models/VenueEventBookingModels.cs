@@ -13,7 +13,7 @@ namespace eventEaseBookingSystem.Models
         public string VenueName { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
         public int Capacity { get; set; }
-        public string ImageUrl { get; set; } = string.Empty;
+        public ObjectId? ImageId { get; set; }
     }
 
     public class Event
@@ -22,7 +22,7 @@ namespace eventEaseBookingSystem.Models
         public string EventName { get; set; } = string.Empty;
         public DateTime EventDate { get; set; }
         public string Description { get; set; } = string.Empty;
-        public int VenueId { get; set; }
+        public string VenueId { get; set; } = string.Empty; // Changed from int to string
         public Venue Venue { get; set; } = new Venue();
     }
 

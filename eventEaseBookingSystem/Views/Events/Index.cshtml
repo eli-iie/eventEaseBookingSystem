@@ -1,0 +1,40 @@
+@model IEnumerable<eventEaseBookingSystem.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Events</h1>
+    <a asp-action="Create" class="btn btn-success">+ Create Event</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle bg-white rounded shadow-sm">
+        <thead class="table-light">
+            <tr>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Venue</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ev in Model)
+            {
+                <tr>
+                    <td class="fw-semibold">@ev.EventName</td>
+                    <td>@ev.EventDate.ToString("yyyy-MM-dd")</td>
+                    <td>@ev.Description</td>
+                    <td>@ev.Venue?.VenueName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@ev.EventId" class="btn btn-sm btn-warning me-1">Edit</a>
+                        <a asp-action="Details" asp-route-id="@ev.EventId" class="btn btn-sm btn-info me-1">Details</a>
+                        <a asp-action="Delete" asp-route-id="@ev.EventId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

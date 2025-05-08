@@ -2,6 +2,7 @@ using eventEaseBookingSystem.Data;
 using eventEaseBookingSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace eventEaseBookingSystem.Controllers
 {
@@ -32,6 +33,8 @@ namespace eventEaseBookingSystem.Controllers
 
         public IActionResult Create()
         {
+            var venues = _context.Venues.Find(_ => true).ToList();
+            ViewBag.Venues = venues;
             return View();
         }
 
@@ -39,11 +42,19 @@ namespace eventEaseBookingSystem.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Event eventItem)
         {
+            if (string.IsNullOrEmpty(eventItem.VenueId) || !ObjectId.TryParse(eventItem.VenueId, out _))
+            {
+                ModelState.AddModelError("VenueId", "Invalid VenueId. Please select a valid venue.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Events.InsertOne(eventItem);
                 return RedirectToAction(nameof(Index));
             }
+
+            var venues = _context.Venues.Find(_ => true).ToList();
+            ViewBag.Venues = venues;
             return View(eventItem);
         }
 
@@ -64,6 +75,14 @@ namespace eventEaseBookingSystem.Controllers
             if (id != eventItem.EventId)
             {
                 return BadRequest();
+            }
+
+            if (string.IsNullOrEmpty(eventItem.VenueId) || !ObjectId.TryParse(eventItem.VenueId, out _))
+            {
+                ModelState.AddModelError("VenueId", "Please select a valid venue.");
+                var venues = _context.Venues.Find(_ => true).ToList();
+                ViewBag.Venues = venues;
+                return View(eventItem);
             }
 
             if (ModelState.IsValid)

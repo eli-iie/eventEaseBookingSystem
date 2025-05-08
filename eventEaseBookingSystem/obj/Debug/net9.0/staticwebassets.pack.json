@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\eliiz\\source\\repos\\eventEaseBookingSystem\\eventEaseBookingSystem\\wwwroot\\images\\venue_sample.jpg",
+      "PackagePath": "staticwebassets\\images\\venue_sample.jpg"
+    },
+    {
       "Id": "C:\\Users\\eliiz\\source\\repos\\eventEaseBookingSystem\\eventEaseBookingSystem\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

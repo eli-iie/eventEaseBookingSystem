@@ -1,0 +1,44 @@
+@model IEnumerable<eventEaseBookingSystem.Models.Booking>
+
+@{
+    ViewData["Title"] = "Booking Calendar";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Booking Calendar</h2>
+            </div>
+            <div class="card-body">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: @Html.Raw(Json.Serialize(Model.Select(booking => new {
+                title = booking.Event.EventName,
+                start = booking.BookingDate.ToString("yyyy-MM-dd"),
+                description = "Venue: " + booking.Venue.VenueName
+            }))),
+            eventClick: function(info) {
+                alert('Event: ' + info.event.title + '\nDescription: ' + info.event.extendedProps.description);
+            }
+        });
+        calendar.render();
+    });
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
