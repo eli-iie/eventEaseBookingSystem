@@ -25,19 +25,28 @@ This is an ASP.NET Core MVC application for managing event bookings, venues, and
    dotnet restore
    ```
 
-3. **Configure Secrets:**
-   - This project uses [User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets) for sensitive information.
-   - The following secrets are required (replace with your own or request from the project owner):
-     - `ConnectionStrings:DefaultConnection` = `***REMOVED***;`
-     - `AzureBlobStorage:ConnectionString` = `DefaultEndpointsProtocol=https;AccountName=eventeasestore10129307;AccountKey=***REMOVED***;EndpointSuffix=core.windows.net`
-   - Do NOT commit `appsettings.json` with real secrets to the repository.
-   - Instead, add secrets locally using the following commands:
+3. **Configure Database:**
 
+   Option A - Using Local SQL Server Express (Recommended for Marking):
+   - Install SQL Server Express if you haven't already
+   - Open appsettings.json and replace the connection string with:
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=EventEaseDB;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
+   }
+   ```
+   - The application will create the database and seed initial data on first run
+
+   Option B - Using Azure Resources (Production):
+   - Contact the project owner for Azure connection strings
+   - Use dotnet user-secrets to store them:
    ```sh
    dotnet user-secrets init
-   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "<YOUR-DB-CONNECTION-STRING-HERE>"
-   dotnet user-secrets set "AzureBlobStorage:ConnectionString" "<YOUR-AZURE-BLOB-CONNECTION-STRING-HERE>"
+   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "<request-from-project-owner>"
+   dotnet user-secrets set "AzureBlobStorage:ConnectionString" "<request-from-project-owner>"
    ```
+
+   Note: File uploads will be stored locally when using SQL Express, and in Azure Blob Storage when using Azure connection strings.
 
 4. **Run the application:**
    ```sh
