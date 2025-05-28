@@ -1,0 +1,13 @@
+# Ignore configuration files with secrets
+appsettings.json
+appsettings.Development.json
+publish/appsettings.json
+publish/appsettings.Development.json
+# Ignore build output
+bin/
+obj/
+publish/
+# Ignore user-specific files
+*.user
+*.suo
+.vs/

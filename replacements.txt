@@ -1,0 +1,17 @@
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+DefaultEndpointsProtocol=https;AccountName=eventeasestore10129307;AccountKey=***REMOVED***;EndpointSuffix=core.windows.net
+***REMOVED***
+"AccountKey": "***REMOVED***"
+'AccountKey': '***REMOVED***'
+***REMOVED***
+***REMOVED***
+***REMOVED***
+'DefaultConnection': '***REMOVED***;'
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
