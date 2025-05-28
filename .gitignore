@@ -3,6 +3,8 @@ appsettings.json
 appsettings.Development.json
 publish/appsettings.json
 publish/appsettings.Development.json
+connection-strings.txt
+
 # Ignore build output
 bin/
 obj/
