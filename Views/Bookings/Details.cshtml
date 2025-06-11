@@ -1,0 +1,68 @@
+@model eventEaseBookingSystem.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h2 class="mb-0"><i class="fas fa-bookmark"></i> Booking Details</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3"><i class="fas fa-hashtag text-muted"></i> Booking ID:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.BookingId)</dd>
+                      <dt class="col-sm-3"><i class="fas fa-calendar-alt text-muted"></i> Event:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Event.EventName)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-tag text-muted"></i> Event Type:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Event.EventType)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-building text-muted"></i> Venue:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Venue.VenueName)</dd>
+                      <dt class="col-sm-3"><i class="fas fa-map-marker-alt text-muted"></i> Location:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Venue.Location)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-check-circle text-muted"></i> Venue Available:</dt>
+                    <dd class="col-sm-9">
+                        @if (Model.Venue.IsAvailable)
+                        {
+                            <span class="badge bg-success"><i class="fas fa-check"></i> Available</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger"><i class="fas fa-times"></i> Unavailable</span>
+                        }
+                    </dd>
+                      <dt class="col-sm-3"><i class="fas fa-calendar text-muted"></i> Booking Date:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.BookingDate)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-user text-muted"></i> Customer Name:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerName)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-envelope text-muted"></i> Customer Email:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerEmail)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-phone text-muted"></i> Customer Phone:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerPhone)</dd>
+                </dl>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model.BookingId" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.BookingId" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

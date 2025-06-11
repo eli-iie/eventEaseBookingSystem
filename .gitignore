@@ -1,0 +1,43 @@
+# Ignore test scripts except comprehensive workflow
+*.ps1
+!comprehensive-workflow-test.ps1
+
+# Ignore markdown docs except README
+*.md
+!README.md
+
+# But allow markdown docs in docs/
+docs/*.md
+
+# Ignore bin, obj, publish, and VS folders
+bin/
+obj/
+publish/
+.vs/
+
+# Ignore user-specific and temp files
+*.user
+*.suo
+*.tmp
+*.log
+*.db
+
+# Ignore SQL scripts
+*.sql
+
+# Ignore migration/database fix scripts
+FixDatabaseSchema.cs
+FixMigrationHistory.cs
+
+# Ignore appsettings and sensitive config
+appsettings*.json
+
+# Ignore comprehensive workflow test and other scripts
+comprehensive-workflow-test.ps1
+*.ps1
+
+# Ignore other output
+*.txt
+
+# Allow schema.sql
+!schema.sql

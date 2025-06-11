@@ -1,0 +1,78 @@
+@model eventEaseBookingSystem.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-warning text-white">
+                <h2 class="mb-0"><i class="fas fa-edit"></i> Edit Booking</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    <input type="hidden" asp-for="BookingId" />
+                    
+                    <div class="mb-3">
+                        <label asp-for="EventId" class="form-label">Event</label>
+                        <select asp-for="EventId" class="form-select" asp-items="ViewBag.EventId">
+                            <option value="">-- Select an Event --</option>
+                        </select>
+                        <span asp-validation-for="EventId" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="VenueId" class="form-label">Venue</label>
+                        <select asp-for="VenueId" class="form-select" asp-items="ViewBag.VenueId">
+                            <option value="">-- Select a Venue --</option>
+                        </select>
+                        <span asp-validation-for="VenueId" class="text-danger"></span>
+                    </div>
+                      <div class="mb-3">
+                        <label asp-for="BookingDate" class="form-label">Booking Date</label>
+                        <input asp-for="BookingDate" class="form-control" type="date" />
+                        <span asp-validation-for="BookingDate" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="CustomerName" class="form-label"></label>
+                        <input asp-for="CustomerName" class="form-control" placeholder="Enter customer name" />
+                        <span asp-validation-for="CustomerName" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="CustomerEmail" class="form-label"></label>
+                        <input asp-for="CustomerEmail" class="form-control" type="email" placeholder="Enter customer email" />
+                        <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="CustomerPhone" class="form-label"></label>
+                        <input asp-for="CustomerPhone" class="form-control" type="tel" placeholder="Enter customer phone (optional)" />
+                        <span asp-validation-for="CustomerPhone" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Note:</strong> The system will prevent double bookings for the same venue on the same date.
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

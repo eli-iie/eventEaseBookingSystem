@@ -1,0 +1,684 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Venues - EventEase</title>
+    
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg" />
+    <link rel="stylesheet" href="/eventEaseBookingSystem.styles.css?v=pOyK_4zIn6Y7jJc-NEp-5GLyNeugyOIhNCFNhxKEf3w" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <header b-8ps7zwk9u4>
+        <nav b-8ps7zwk9u4 class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div b-8ps7zwk9u4 class="container-fluid">
+                <a class="navbar-brand text-primary fw-bold" href="/">
+                    <i b-8ps7zwk9u4 class="fas fa-calendar-check"></i> EventEase
+                </a>
+                <button b-8ps7zwk9u4 class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-8ps7zwk9u4 class="navbar-toggler-icon"></span>
+                </button>
+                <div b-8ps7zwk9u4 class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-8ps7zwk9u4 class="navbar-nav flex-grow-1">
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/">
+                                <i b-8ps7zwk9u4 class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Venues">
+                                <i b-8ps7zwk9u4 class="fas fa-building"></i> Venues
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Events">
+                                <i b-8ps7zwk9u4 class="fas fa-calendar-alt"></i> Events
+                            </a>
+                        </li>                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Bookings">
+                                <i b-8ps7zwk9u4 class="fas fa-bookmark"></i> Bookings
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Reports">
+                                <i b-8ps7zwk9u4 class="fas fa-chart-bar"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div b-8ps7zwk9u4 class="container">
+        <main b-8ps7zwk9u4 role="main" class="pb-3">
+            
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-building text-primary"></i> Venues</h1>
+    <a class="btn btn-primary" href="/Venues/Create">
+        <i class="fas fa-plus"></i> Create New Venue
+    </a>
+</div>
+
+<!-- Enhanced Search Form -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-search"></i> Search & Filter Venues</h5>
+        <form method="get" class="row g-3" action="/Venues">
+            <div class="col-md-4">
+                <label for="searchString" class="form-label">Search Name or Location</label>
+                <input type="text" class="form-control" id="searchString" name="searchString" placeholder="Enter venue name or location">
+            </div>
+            <div class="col-md-3">
+                <label for="minCapacity" class="form-label">Min Capacity</label>
+                <input type="number" class="form-control" id="minCapacity" name="minCapacity" min="1" placeholder="Min capacity">
+            </div>
+            <div class="col-md-3">
+                <label for="maxCapacity" class="form-label">Max Capacity</label>
+                <input type="number" class="form-control" id="maxCapacity" name="maxCapacity" min="1" placeholder="Max capacity">
+            </div>
+            <div class="col-md-2">
+                <label>&nbsp;</label>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f29b1fe317?w=400" class="card-img-top" alt="Grand Ballroom" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Grand Ballroom</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Downtown Convention Center
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 500
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/1">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/1">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/1">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400" class="card-img-top" alt="Garden Pavilion" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Garden Pavilion</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> City Park
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 200
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/2">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/2">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/2">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400" class="card-img-top" alt="Conference Hall A" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Conference Hall A</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Business District
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 100
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/3">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/3">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/3">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Automation Venue</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test City, Automation District
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 150
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/4">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/4">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/4">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <img src="https://eventeasestore10129307.blob.core.windows.net/images/119c4dfa-bf82-46f4-9cbc-a2c59fea1448.jpg" class="card-img-top" alt="Mazabuko" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Mazabuko</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> marabastad
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 300
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/5">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/5">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/5">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Conference Center 0610_215559</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Conference Center
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 284
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/6">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/6">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/6">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Wedding Hall 0610_215600</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Wedding Hall
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 315
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/7">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/7">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/7">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Exhibition Space 0610_215601</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Exhibition Space
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 433
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/8">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/8">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/8">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Conference Center 0610_231317</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Conference Center
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 111
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/9">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/9">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/9">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Wedding Hall 0610_231318</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Wedding Hall
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 415
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/10">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/10">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/10">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Exhibition Space 0610_231319</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Exhibition Space
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 336
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/11">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/11">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/11">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Conference Center 0610_231425</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Conference Center
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 123
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/12">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/12">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/12">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Wedding Hall 0610_231426</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Wedding Hall
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 490
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/13">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/13">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/13">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Exhibition Space 0610_231427</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Exhibition Space
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 136
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/14">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/14">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/14">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Conference Center 0610_232447</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Conference Center
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 471
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/15">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/15">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/15">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Wedding Hall 0610_232448</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Wedding Hall
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 196
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/16">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/16">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/16">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Exhibition Space 0610_232449</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Exhibition Space
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 460
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/17">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/17">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/17">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Conference Center 0610_232534</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Conference Center
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 259
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/18">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/18">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/18">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Wedding Hall 0610_232535</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Wedding Hall
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 226
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/19">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/19">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/19">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-image fa-3x text-muted"></i>
+                    </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Test Exhibition Space 0610_232536</h5>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt text-muted"></i> Test Location for Test Exhibition Space
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-users text-muted"></i> Capacity: 352
+                    </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Venues/Edit/20">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Venues/Details/20">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Venues/Delete/20">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+        </main>
+    </div>
+
+    <footer b-8ps7zwk9u4 class="border-top footer text-muted">
+        <div b-8ps7zwk9u4 class="container">
+            &copy; 2025 - eventEaseBookingSystem - <a href="/Home/Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,208 @@
+@model IEnumerable<eventEaseBookingSystem.Models.Booking>
+
+@{
+    ViewData["Title"] = "Consolidated Bookings Report";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-list-alt text-primary"></i> Consolidated Bookings Report</h1>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+</div>
+
+<!-- Advanced Filter Form -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-filter"></i> Advanced Filters</h5>
+        <form asp-action="ConsolidatedBookings" method="get" class="row g-3">
+            <div class="col-md-3">
+                <label for="searchString" class="form-label">Search</label>
+                <input type="text" class="form-control" id="searchString" name="searchString" 
+                       value="@ViewData["CurrentFilter"]" placeholder="Event or venue name">
+            </div>
+            <div class="col-md-2">
+                <label for="eventType" class="form-label">Event Type</label>
+                <select class="form-select" id="eventType" name="eventType">
+                    <option value="">All Types</option>
+                    @foreach (var eventType in (List<eventEaseBookingSystem.Models.EventType>)ViewData["EventTypes"])
+                    {
+                        <option value="@((int)eventType)" selected="@(ViewData["EventType"]?.Equals((int)eventType) == true)">
+                            @eventType
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="venueId" class="form-label">Venue</label>
+                <select class="form-select" id="venueId" name="venueId">
+                    <option value="">All Venues</option>
+                    @foreach (var venue in (List<eventEaseBookingSystem.Models.Venue>)ViewData["Venues"])
+                    {
+                        <option value="@venue.VenueId" selected="@(ViewData["VenueId"]?.Equals(venue.VenueId) == true)">
+                            @venue.VenueName
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="startDate" class="form-label">From Date</label>
+                <input type="date" class="form-control" id="startDate" name="startDate" 
+                       value="@ViewData["StartDate"]">
+            </div>
+            <div class="col-md-2">
+                <label for="endDate" class="form-label">To Date</label>
+                <input type="date" class="form-control" id="endDate" name="endDate" 
+                       value="@ViewData["EndDate"]">
+            </div>
+            <div class="col-md-1 d-flex align-items-end">
+                <div class="d-grid w-100">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        @if (!string.IsNullOrEmpty(ViewData["CurrentFilter"]?.ToString()) || 
+             ViewData["EventType"] != null || ViewData["VenueId"] != null ||
+             !string.IsNullOrEmpty(ViewData["StartDate"]?.ToString()) ||
+             !string.IsNullOrEmpty(ViewData["EndDate"]?.ToString()))
+        {
+            <div class="mt-2">
+                <a asp-action="ConsolidatedBookings" class="btn btn-outline-secondary btn-sm">
+                    <i class="fas fa-times"></i> Clear Filters
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Bookings Summary -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> 
+            Showing <strong>@Model.Count()</strong> booking(s) matching your criteria.
+        </div>
+    </div>
+</div>
+
+<!-- Bookings Table -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="fas fa-table"></i> Booking Details</h5>
+        <button class="btn btn-success btn-sm" onclick="exportBookings()">
+            <i class="fas fa-download"></i> Export to CSV
+        </button>
+    </div>
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-striped table-hover" id="bookingsTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Booking Date</th>
+                            <th>Event Name</th>
+                            <th>Event Type</th>
+                            <th>Event Date</th>
+                            <th>Venue</th>
+                            <th>Location</th>
+                            <th>Capacity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span class="badge bg-primary">#@item.BookingId</span>
+                                </td>
+                                <td>@item.BookingDate.ToString("yyyy-MM-dd")</td>
+                                <td>
+                                    <strong>@item.Event.EventName</strong>
+                                    @if (!string.IsNullOrEmpty(item.Event.Description))
+                                    {
+                                        <br><small class="text-muted">@item.Event.Description.Substring(0, Math.Min(50, item.Event.Description.Length))...</small>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">@item.Event.EventType</span>
+                                </td>
+                                <td>@item.Event.EventDate.ToString("yyyy-MM-dd")</td>
+                                <td>
+                                    <strong>@item.Venue.VenueName</strong>
+                                </td>
+                                <td>@item.Venue.Location</td>
+                                <td>
+                                    <span class="badge bg-secondary">@item.Venue.Capacity</span>
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-controller="Bookings" asp-action="Details" asp-route-id="@item.BookingId" 
+                                           class="btn btn-outline-primary btn-sm" title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a asp-controller="Bookings" asp-action="Edit" asp-route-id="@item.BookingId" 
+                                           class="btn btn-outline-success btn-sm" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning text-center">
+                <i class="fas fa-exclamation-triangle fa-2x mb-3"></i>
+                <h5>No bookings found</h5>
+                <p>Try adjusting your search criteria or <a asp-controller="Bookings" asp-action="Create">create a new booking</a>.</p>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+function exportBookings() {
+    const table = document.getElementById('bookingsTable');
+    const rows = [];
+    
+    // Get headers
+    const headers = Array.from(table.querySelectorAll('thead th'))
+        .slice(0, -1) // Exclude Actions column
+        .map(th => th.textContent.trim());
+    rows.push(headers.join(','));
+    
+    // Get data rows
+    table.querySelectorAll('tbody tr').forEach(tr => {
+        const cells = Array.from(tr.querySelectorAll('td'))
+            .slice(0, -1) // Exclude Actions column
+            .map(td => {
+                // Clean up the text content
+                let text = td.textContent.trim();
+                // Remove extra whitespace and newlines
+                text = text.replace(/\s+/g, ' ');
+                // Escape commas in the text
+                if (text.includes(',')) {
+                    text = `"${text}"`;
+                }
+                return text;
+            });
+        rows.push(cells.join(','));
+    });
+    
+    const csvContent = rows.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `consolidated-bookings-${new Date().toISOString().split('T')[0]}.csv`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+}
+</script>

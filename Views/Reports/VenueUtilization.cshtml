@@ -1,0 +1,208 @@
+@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Venue Utilization Analysis";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-chart-pie text-success"></i> Venue Utilization Analysis</h1>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            This report shows venue usage statistics, booking patterns, and performance metrics to help optimize venue management.
+        </div>
+    </div>
+</div>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    @if (!string.IsNullOrEmpty(item.Venue.ImageUrl))
+                    {
+                        <img src="@item.Venue.ImageUrl" class="card-img-top" alt="@item.Venue.VenueName" style="height: 200px; object-fit: cover;">
+                    }
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">@item.Venue.VenueName</h5>
+                        <small class="text-muted">@item.Venue.Location</small>
+                    </div>
+                    <div class="card-body">
+                        <!-- Key Metrics -->
+                        <div class="row text-center mb-3">
+                            <div class="col-4">
+                                <div class="border-end">
+                                    <h4 class="text-primary mb-0">@item.TotalBookings</h4>
+                                    <small class="text-muted">Bookings</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-end">
+                                    <h4 class="text-success mb-0">@item.UniqueEvents</h4>
+                                    <small class="text-muted">Events</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <h4 class="text-info mb-0">@item.Venue.Capacity</h4>
+                                <small class="text-muted">Capacity</small>
+                            </div>
+                        </div>
+
+                        <!-- Utilization Rate -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="text-muted">Utilization Rate</span>
+                                <span class="badge @(item.UtilizationRate > 50 ? "bg-success" : item.UtilizationRate > 20 ? "bg-warning" : "bg-danger")">
+                                    @string.Format("{0:F1}%", item.UtilizationRate)
+                                </span>
+                            </div>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar @(item.UtilizationRate > 50 ? "bg-success" : item.UtilizationRate > 20 ? "bg-warning" : "bg-danger")" 
+                                     style="width: @Math.Min(100, item.UtilizationRate)%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Last Booking -->
+                        <div class="mb-3">
+                            <small class="text-muted d-block">Last Booking:</small>
+                            @if (item.LastBooking != null)
+                            {
+                                <span class="badge bg-secondary">@((DateTime)item.LastBooking).ToString("yyyy-MM-dd")</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">No bookings</span>
+                            }
+                        </div>
+
+                        <!-- Performance Status -->
+                        <div class="mb-3">
+                            <small class="text-muted d-block">Performance Status:</small>
+                            @if (item.TotalBookings == 0)
+                            {
+                                <span class="badge bg-danger">Unused</span>
+                            }
+                            else if (item.UtilizationRate > 75)
+                            {
+                                <span class="badge bg-success">High Demand</span>
+                            }
+                            else if (item.UtilizationRate > 40)
+                            {
+                                <span class="badge bg-warning">Moderate Use</span>
+                            }
+                            else if (item.UtilizationRate > 10)
+                            {
+                                <span class="badge bg-info">Low Use</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Minimal Use</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group w-100">
+                            <a asp-controller="Venues" asp-action="Details" asp-route-id="@item.Venue.VenueId" 
+                               class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
+                            <a asp-controller="Events" asp-action="Index" asp-route-venueId="@item.Venue.VenueId" 
+                               class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-calendar"></i> View Events
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Summary Statistics -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-bar"></i> Utilization Summary</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <h4 class="text-success">@Model.Count(v => v.UtilizationRate > 50)</h4>
+                            <small class="text-muted">High Utilization<br>(>50%)</small>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <h4 class="text-warning">@Model.Count(v => v.UtilizationRate > 20 && v.UtilizationRate <= 50)</h4>
+                            <small class="text-muted">Moderate Utilization<br>(20-50%)</small>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <h4 class="text-info">@Model.Count(v => v.UtilizationRate > 0 && v.UtilizationRate <= 20)</h4>
+                            <small class="text-muted">Low Utilization<br>(1-20%)</small>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <h4 class="text-danger">@Model.Count(v => v.UtilizationRate == 0)</h4>
+                            <small class="text-muted">Unused Venues<br>(0%)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-lightbulb"></i> Recommendations</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @if (Model.Any(v => v.UtilizationRate == 0))
+                        {
+                            <div class="col-md-6">
+                                <div class="alert alert-warning">
+                                    <strong><i class="fas fa-exclamation-triangle"></i> Unused Venues</strong><br>
+                                    Consider marketing strategies for venues with zero bookings or review their viability.
+                                </div>
+                            </div>
+                        }
+                        @if (Model.Any(v => v.UtilizationRate > 75))
+                        {
+                            <div class="col-md-6">
+                                <div class="alert alert-success">
+                                    <strong><i class="fas fa-trophy"></i> High Performers</strong><br>
+                                    High-demand venues may benefit from premium pricing or capacity optimization.
+                                </div>
+                            </div>
+                        }
+                        @if (Model.Count(v => v.UtilizationRate > 20 && v.UtilizationRate <= 50) > 0)
+                        {
+                            <div class="col-md-6">
+                                <div class="alert alert-info">
+                                    <strong><i class="fas fa-chart-line"></i> Growth Potential</strong><br>
+                                    Moderate-use venues have room for growth through targeted marketing.
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning text-center">
+        <i class="fas fa-exclamation-triangle fa-2x mb-3"></i>
+        <h5>No venue data available</h5>
+        <p>Please <a asp-controller="Venues" asp-action="Create">add some venues</a> to see utilization analysis.</p>
+    </div>
+}

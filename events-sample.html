@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Events - EventEase</title>
+    
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg" />
+    <link rel="stylesheet" href="/eventEaseBookingSystem.styles.css?v=pOyK_4zIn6Y7jJc-NEp-5GLyNeugyOIhNCFNhxKEf3w" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <header b-8ps7zwk9u4>
+        <nav b-8ps7zwk9u4 class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div b-8ps7zwk9u4 class="container-fluid">
+                <a class="navbar-brand text-primary fw-bold" href="/">
+                    <i b-8ps7zwk9u4 class="fas fa-calendar-check"></i> EventEase
+                </a>
+                <button b-8ps7zwk9u4 class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-8ps7zwk9u4 class="navbar-toggler-icon"></span>
+                </button>
+                <div b-8ps7zwk9u4 class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-8ps7zwk9u4 class="navbar-nav flex-grow-1">
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/">
+                                <i b-8ps7zwk9u4 class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Venues">
+                                <i b-8ps7zwk9u4 class="fas fa-building"></i> Venues
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Events">
+                                <i b-8ps7zwk9u4 class="fas fa-calendar-alt"></i> Events
+                            </a>
+                        </li>                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Bookings">
+                                <i b-8ps7zwk9u4 class="fas fa-bookmark"></i> Bookings
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Reports">
+                                <i b-8ps7zwk9u4 class="fas fa-chart-bar"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div b-8ps7zwk9u4 class="container">
+        <main b-8ps7zwk9u4 role="main" class="pb-3">
+            
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-calendar-alt text-success"></i> Events</h1>
+    <a class="btn btn-success" href="/Events/Create">
+        <i class="fas fa-plus"></i> Create New Event
+    </a>
+</div>
+
+<!-- Advanced Search and Filter Form -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-filter"></i> Advanced Search & Filter</h5>
+        <form method="get" class="row g-3" action="/Events">
+            <div class="col-md-3">
+                <label for="searchString" class="form-label">Search Events</label>
+                <input type="text" class="form-control" id="searchString" name="searchString" placeholder="Event name, description, or venue">
+            </div>            <div class="col-md-2">
+                <label for="eventType" class="form-label">Event Type</label>
+                <select class="form-select" id="eventType" name="eventType">
+                    <option value="">All Types</option>
+                <option value="0">Conference</option>
+<option value="1">Wedding</option>
+<option value="2">Concert</option>
+<option value="3">Workshop</option>
+<option value="4">Exhibition</option>
+<option value="5">Party</option>
+<option value="6">Meeting</option>
+<option value="7">Sport</option>
+<option value="8">Festival</option>
+<option value="9">Other</option>
+</select>
+            </div>
+            <div class="col-md-2">
+                <label for="venueId" class="form-label">Venue</label>
+                <select class="form-select" id="venueId" name="venueId">
+                    <option value="">All Venues</option>
+                <option value="1">Grand Ballroom</option>
+<option value="2">Garden Pavilion</option>
+<option value="3">Conference Hall A</option>
+<option value="4">Test Automation Venue</option>
+<option value="7">Test Wedding Hall 0610_215600</option>
+</select>
+            </div>
+            <div class="col-md-2">
+                <label for="startDate" class="form-label">From Date</label>
+                <input type="date" class="form-control" id="startDate" name="startDate">
+            </div>            <div class="col-md-2">
+                <label for="endDate" class="form-label">To Date</label>
+                <input type="date" class="form-control" id="endDate" name="endDate">
+            </div>
+            <div class="col-md-1 d-flex align-items-end">
+                <div class="d-grid w-100">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title text-success mb-0">good friday</h5>
+                        <span class="badge bg-info">Wedding</span>
+                    </div>
+                    <p class="card-text mb-1">
+                        <i class="fas fa-calendar text-muted"></i> 2025/06/21
+                    </p>
+                    <p class="card-text mb-2">
+                        <i class="fas fa-building text-muted"></i> Test Wedding Hall 0610_215600
+                    </p>
+                        <p class="card-text flex-grow-1">
+                            <i class="fas fa-info-circle text-muted"></i> bub ibubu
+                        </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Events/Edit/5">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Events/Details/5">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Events/Delete/5">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title text-success mb-0">Product Launch</h5>
+                        <span class="badge bg-info">Other</span>
+                    </div>
+                    <p class="card-text mb-1">
+                        <i class="fas fa-calendar text-muted"></i> 2025/06/25
+                    </p>
+                    <p class="card-text mb-2">
+                        <i class="fas fa-building text-muted"></i> Conference Hall A
+                    </p>
+                        <p class="card-text flex-grow-1">
+                            <i class="fas fa-info-circle text-muted"></i> New product launch presentation
+                        </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Events/Edit/2">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Events/Details/2">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Events/Delete/2">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title text-success mb-0">Debug Test Event</h5>
+                        <span class="badge bg-info">Conference</span>
+                    </div>
+                    <p class="card-text mb-1">
+                        <i class="fas fa-calendar text-muted"></i> 2025/07/10
+                    </p>
+                    <p class="card-text mb-2">
+                        <i class="fas fa-building text-muted"></i> Grand Ballroom
+                    </p>
+                        <p class="card-text flex-grow-1">
+                            <i class="fas fa-info-circle text-muted"></i> Test event
+                        </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Events/Edit/3">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Events/Details/3">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Events/Delete/3">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title text-success mb-0">Success Test 231004</h5>
+                        <span class="badge bg-info">Conference</span>
+                    </div>
+                    <p class="card-text mb-1">
+                        <i class="fas fa-calendar text-muted"></i> 2025/07/10
+                    </p>
+                    <p class="card-text mb-2">
+                        <i class="fas fa-building text-muted"></i> Grand Ballroom
+                    </p>
+                        <p class="card-text flex-grow-1">
+                            <i class="fas fa-info-circle text-muted"></i> Success test
+                        </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Events/Edit/4">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Events/Details/4">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Events/Delete/4">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title text-success mb-0">Annual Gala</h5>
+                        <span class="badge bg-info">Other</span>
+                    </div>
+                    <p class="card-text mb-1">
+                        <i class="fas fa-calendar text-muted"></i> 2025/07/10
+                    </p>
+                    <p class="card-text mb-2">
+                        <i class="fas fa-building text-muted"></i> Grand Ballroom
+                    </p>
+                        <p class="card-text flex-grow-1">
+                            <i class="fas fa-info-circle text-muted"></i> Annual company gala event
+                        </p>
+                    <div class="mt-auto">
+                        <div class="btn-group w-100" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Events/Edit/1">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Events/Details/1">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Events/Delete/1">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+        </main>
+    </div>
+
+    <footer b-8ps7zwk9u4 class="border-top footer text-muted">
+        <div b-8ps7zwk9u4 class="container">
+            &copy; 2025 - eventEaseBookingSystem - <a href="/Home/Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo"></script>
+    
+</body>
+</html>
+

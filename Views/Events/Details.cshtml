@@ -1,0 +1,50 @@
+@model eventEaseBookingSystem.Models.Event
+
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h2 class="mb-0"><i class="fas fa-calendar-alt"></i> Event Details</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3"><i class="fas fa-tag text-muted"></i> Event Name:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.EventName)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-calendar text-muted"></i> Event Date:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.EventDate)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-building text-muted"></i> Venue:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Venue.VenueName)</dd>
+                    
+                    <dt class="col-sm-3"><i class="fas fa-map-marker-alt text-muted"></i> Location:</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Venue.Location)</dd>
+                    
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <dt class="col-sm-3"><i class="fas fa-info-circle text-muted"></i> Description:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+                    }
+                </dl>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model.EventId" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.EventId" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

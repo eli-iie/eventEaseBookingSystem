@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <title>Bookings - EventEase</title>
+    
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg" />
+    <link rel="stylesheet" href="/eventEaseBookingSystem.styles.css?v=pOyK_4zIn6Y7jJc-NEp-5GLyNeugyOIhNCFNhxKEf3w" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <header b-8ps7zwk9u4>
+        <nav b-8ps7zwk9u4 class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div b-8ps7zwk9u4 class="container-fluid">
+                <a class="navbar-brand text-primary fw-bold" href="/">
+                    <i b-8ps7zwk9u4 class="fas fa-calendar-check"></i> EventEase
+                </a>
+                <button b-8ps7zwk9u4 class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-8ps7zwk9u4 class="navbar-toggler-icon"></span>
+                </button>
+                <div b-8ps7zwk9u4 class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-8ps7zwk9u4 class="navbar-nav flex-grow-1">
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/">
+                                <i b-8ps7zwk9u4 class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Venues">
+                                <i b-8ps7zwk9u4 class="fas fa-building"></i> Venues
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Events">
+                                <i b-8ps7zwk9u4 class="fas fa-calendar-alt"></i> Events
+                            </a>
+                        </li>                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Bookings">
+                                <i b-8ps7zwk9u4 class="fas fa-bookmark"></i> Bookings
+                            </a>
+                        </li>
+                        <li b-8ps7zwk9u4 class="nav-item">
+                            <a class="nav-link text-dark" href="/Reports">
+                                <i b-8ps7zwk9u4 class="fas fa-chart-bar"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div b-8ps7zwk9u4 class="container">
+        <main b-8ps7zwk9u4 role="main" class="pb-3">
+            
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-bookmark text-warning"></i> Bookings</h1>
+    <a class="btn btn-warning" href="/Bookings/Create">
+        <i class="fas fa-plus"></i> Create New Booking
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th><i class="fas fa-hashtag"></i> Booking ID</th>
+                <th><i class="fas fa-calendar-alt"></i> Event</th>
+                <th><i class="fas fa-building"></i> Venue</th>                <th><i class="fas fa-calendar"></i> Booking Date</th>
+                <th><i class="fas fa-user"></i> Customer</th>
+                <th><i class="fas fa-envelope"></i> Email</th>
+                <th><i class="fas fa-cogs"></i> Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>3</td>
+                    <td>Product Launch</td>
+                    <td>Conference Hall A</td>
+                    <td>2025/06/20</td>
+                    <td>jbj </td>
+                    <td><a href="mailto:eli.ize.dev@gmail.com">eli.ize.dev@gmail.com</a></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Bookings/Edit/3">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Bookings/Details/3">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Bookings/Delete/3">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Debug Test Event</td>
+                    <td>Conference Hall A</td>
+                    <td>2025/06/28</td>
+                    <td>KEREN IZE</td>
+                    <td><a href="mailto:eli.ize.dev@gmail.com">eli.ize.dev@gmail.com</a></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Bookings/Edit/4">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Bookings/Details/4">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Bookings/Delete/4">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Success Test 231004</td>
+                    <td>Garden Pavilion</td>
+                    <td>2025/06/13</td>
+                    <td>ELI</td>
+                    <td><a href="mailto:el2ize96@gmail.com">el2ize96@gmail.com</a></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Bookings/Edit/5">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Bookings/Details/5">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Bookings/Delete/5">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Product Launch</td>
+                    <td>Grand Ballroom</td>
+                    <td>2025/06/20</td>
+                    <td>KEREN IZE</td>
+                    <td><a href="mailto:el2ize96@gmail.com">el2ize96@gmail.com</a></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-warning btn-sm" href="/Bookings/Edit/6">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-info btn-sm" href="/Bookings/Details/6">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Bookings/Delete/6">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+
+
+        </main>
+    </div>
+
+    <footer b-8ps7zwk9u4 class="border-top footer text-muted">
+        <div b-8ps7zwk9u4 class="container">
+            &copy; 2025 - eventEaseBookingSystem - <a href="/Home/Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo"></script>
+    
+</body>
+</html>
+
